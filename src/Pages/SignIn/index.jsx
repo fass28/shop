@@ -1,7 +1,7 @@
-import "./App.css";
+import Layout from "../../Components/Layout";
 
 function SignIn() {
-  return <div className="bg-red-100">SignIn </div>;
+  return <Layout>Sig In</Layout>
 }
 
 export default SignIn;

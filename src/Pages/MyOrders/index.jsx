@@ -1,7 +1,7 @@
-import "./App.css";
+import Layout from "../../Components/Layout";
 
 function MyOrders() {
-  return <div className="bg-red-100">MyOrders </div>;
+  return <Layout>My Orders</Layout>
 }
 
 export default MyOrders;
