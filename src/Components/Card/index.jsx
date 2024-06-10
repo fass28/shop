@@ -10,16 +10,20 @@ const Card = ({ data }) => {
     context.setProductToShow(productDetail);
   };
 
-  const addProductToCart = (productData) => {
+  const addProductToCart = (event, productData) => {
+    event.stopPropagation();
     context.setCount(context.count + 1);
-
     context.setCartProducts([...context.cartProducts, productData]);
+    context.openCheckoutSideMenu()
+    context.closeProductDetail();
+
     /*  let newProductsArray = []
     newProductsArray = context.cartProducts.push(productData)
     newProductsArray = [...context.cartProducts]
 
     context.setCartProducts(newProductsArray)*/
-    console.log(context.cartProducts); 
+
+    console.log(context.cartProducts);
   };
 
   return (
@@ -38,7 +42,7 @@ const Card = ({ data }) => {
         />
         <div
           className="absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full  m-2 p-1"
-          onClick={() => addProductToCart(data)}
+          onClick={(event) => addProductToCart(event, data)}
         >
           <PlusIcon className="h-6 w-6 text-black"></PlusIcon>
         </div>
