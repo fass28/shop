@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { ShoppingCartContext } from "../../Context";
-import { PlusIcon } from "@heroicons/react/24/solid";
+import { PlusIcon, CheckIcon } from "@heroicons/react/24/solid";
 
 const Card = ({ data }) => {
   const context = useContext(ShoppingCartContext);
@@ -14,7 +14,7 @@ const Card = ({ data }) => {
     event.stopPropagation();
     context.setCount(context.count + 1);
     context.setCartProducts([...context.cartProducts, productData]);
-    context.openCheckoutSideMenu()
+    context.openCheckoutSideMenu();
     context.closeProductDetail();
 
     /*  let newProductsArray = []
@@ -22,7 +22,28 @@ const Card = ({ data }) => {
     newProductsArray = [...context.cartProducts]
 
     context.setCartProducts(newProductsArray)*/
+  };
 
+  const renderIcon = (id) => {
+    const isInCart =
+      context.cartProducts.filter((product) => product.id === id).length > 0;
+    if (isInCart) {
+      return (
+        <div
+          className='absolute top-0 right-0 flex justify-center items-center bg-green-500 w-6 h-6 rounded-full  m-2 p-1'
+        >
+          <CheckIcon className="h-6 w-6 text-white"></CheckIcon>
+        </div>
+      );
+    } else
+      return (
+        <div
+          className="absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full  m-2 p-1"
+          onClick={(event) => addProductToCart(event, data)}
+        >
+          <PlusIcon className="h-6 w-6 text-black"></PlusIcon>
+        </div>
+      );
   };
 
   return (
@@ -39,12 +60,7 @@ const Card = ({ data }) => {
           src={data.images[0]}
           alt="HeadsPhone"
         />
-        <div
-          className="absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full  m-2 p-1"
-          onClick={(event) => addProductToCart(event, data)}
-        >
-          <PlusIcon className="h-6 w-6 text-black"></PlusIcon>
-        </div>
+        {renderIcon(data.id)}
       </figure>
       <p className="flex justify-between">
         <span className="text-sm font-light">{data.title}</span>
