@@ -23,7 +23,6 @@ const Card = ({ data }) => {
 
     context.setCartProducts(newProductsArray)*/
 
-    console.log(context.cartProducts);
   };
 
   return (
