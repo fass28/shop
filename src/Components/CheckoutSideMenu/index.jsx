@@ -2,11 +2,17 @@ import { useContext } from "react";
 import { XCircleIcon } from "@heroicons/react/24/solid";
 import { ShoppingCartContext } from "../../Context";
 import OrderCard from "../../Components/OrderCard";
+import { totalPrice } from "../../Utils";
+
 import "./styles.css";
 
 const CheckoutSideMenu = () => {
   const context = useContext(ShoppingCartContext);
-
+  const handleDelete = (id) => {
+    const filteredProducts = () =>
+      context.cartProducts.filter((product) => product.id != id);
+    context.setCartProducts(filteredProducts);
+  };
   return (
     <aside
       className={`${
@@ -29,8 +35,16 @@ const CheckoutSideMenu = () => {
             title={product.title}
             price={product.price}
             imagesUrl={product.images}
+            id={product.id}
+            handleDelete={handleDelete}
           />
         ))}
+      </div>
+      <div className="px-6">
+        <p>
+          <span>Total:</span>
+          <span>${totalPrice(context.cartProducts).toFixed(2)}</span>
+        </p>
       </div>
     </aside>
   );
