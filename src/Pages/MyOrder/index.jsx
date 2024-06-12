@@ -22,7 +22,7 @@ function MyOrder() {
         <h1>My Orders</h1>
       </div>
       <div className="flex flex-col w-80">
-        {context.order?.slice(-1)[0].products.map((product) => (
+        {context.order?.slice(-1)[0]?.products.map((product) => (
           <OrderCard
             key={product.id}
             title={product.title}

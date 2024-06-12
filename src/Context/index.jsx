@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState ,useEffect} from "react";
 
 export const ShoppingCartContext = createContext();
 
@@ -25,6 +25,22 @@ export const ShoppingCartProvider = ({ children }) => {
   //shopping Cart . Add order
   const [order, setOrder] = useState([])
 
+//get Products
+const [items, setItems] = useState(null);
+
+//get Products  By Title
+const [searchByTitle, setSearchByTitle] = useState(null);
+console.log(searchByTitle);
+
+useEffect(() => {
+  fetch("https://dummyjson.com/products")
+    .then((response) => response.json())
+    .then((data) => {
+      setItems(data.products)}
+    );
+}, []);
+
+
   return (
     <ShoppingCartContext.Provider
       value={{
@@ -41,7 +57,12 @@ export const ShoppingCartProvider = ({ children }) => {
         cartProducts,
         setCartProducts,
         order,
-        setOrder
+        setOrder,
+        items,
+        setItems,
+        searchByTitle,
+        setSearchByTitle
+  
       }}
     >
       {children}
