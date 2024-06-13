@@ -7,6 +7,10 @@ import MyOrders from "../MyOrders";
 import SignIn from "../SignIn";
 import NotFound from "../NotFound";
 import Navbar from "../../Components/NavBar";
+import Beauty from "../Categories/Beauty";
+import Fragrances from "../Categories/Fragrances";
+import Furnitures from "../Categories/Furnitures";
+import Groceries from "../Categories/Groceries";
 import CheckoutSideMenu from  '../../Components/CheckoutSideMenu'
 
 import "./App.css";
@@ -20,7 +24,11 @@ const AppRoutes = () => {
     { path: "my-orders/last", element: <MyOrder /> },
     { path: '/my-orders/:id', element: <MyOrder /> },
     { path: "sing-in", element: <SignIn /> },
-    { path: "/*", element: <NotFound /> },
+    { path: "/beauty", element: <Beauty /> },
+    { path: "/fragrances", element: <Fragrances /> },
+    { path: "/furnitures", element: <Furnitures /> },
+    { path: "/groceries", element: <Groceries /> },
+
   ]);
   return routes;
 };
