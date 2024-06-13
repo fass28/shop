@@ -22,18 +22,18 @@ const NavBar = () => {
         </li>
         <li>
           <NavLink
-            to="/clothes"
+            to="/beauty"
             className={({ isActive }) => (isActive ? activeStyle : undefined)}
           >
-            Clothes
+            Beauty
           </NavLink>
         </li>
         <li>
           <NavLink
-            to="/electronics"
+            to="/fragrances"
             className={({ isActive }) => (isActive ? activeStyle : undefined)}
           >
-            Electronics
+            Fragrances
           </NavLink>
         </li>
         <li>
@@ -46,18 +46,10 @@ const NavBar = () => {
         </li>
         <li>
           <NavLink
-            to="/toys"
+            to="/groceries"
             className={({ isActive }) => (isActive ? activeStyle : undefined)}
           >
-            Toys
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to="/others"
-            className={({ isActive }) => (isActive ? activeStyle : undefined)}
-          >
-            Others
+            Groceries
           </NavLink>
         </li>
       </ul>
@@ -91,7 +83,7 @@ const NavBar = () => {
         </li>
         <li className="flex justify-center items-center">
           <ShoppingCartIcon className="size-5" />
-          <div className="pl-2">{context.count}</div>
+          <div className="pl-2">{context.cartProducts.length}</div>
         </li>
       </ul>
     </nav>
